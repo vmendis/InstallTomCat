@@ -17,6 +17,7 @@ pipeline {
         stage('Find the OS') {
             steps {
                  sh 'uname -a'
+                 sh  'ps -aef'
             }               
         }
     }
