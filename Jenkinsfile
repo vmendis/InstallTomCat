@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Listing WorkSpace..'
                 sh 'ls'
-                sh 'ansible --version'
+                
             }
         }
         stage('Cat a file') {
