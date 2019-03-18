@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Cat a file') {
             steps {
-                sh 'cat Tomcat-Ansible-Role'
+                sh 'cat deploy-tomcat.yml'
             }
         }
         stage('Deploy') {
