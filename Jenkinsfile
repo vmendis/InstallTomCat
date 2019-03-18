@@ -17,14 +17,7 @@ pipeline {
         stage('Find the OS') {
             steps {
                  sh 'uname -a'
-            }
-            
-        stage('List the processing table... and .. disk usage ..') {
-            steps {
-                 sh 'ps -ae'
-                 sh 'df -h'
-            }    
-            
+            }               
         }
     }
 }
