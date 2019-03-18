@@ -1,0 +1,8 @@
+---
+# tasks file for Role-TomCat
+
+- import_tasks: download-software.yml
+- import_tasks: install-java.yml     #  Working ok 1030 07.march.2019
+- import_tasks: install-tomcat.yml
+- import_tasks: configure-tomcat.yml     # Sets the systemd config files and start tomcat
+- import_tasks: cleanup.yml

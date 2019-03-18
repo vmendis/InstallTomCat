@@ -1,0 +1,34 @@
+---
+- name: Test the sample web page is served
+
+  #hosts: all
+  #become: yes
+  #gather_facts: false
+
+  #roles:
+  #  - ../../.
+
+  # tasks:
+  #   - name: Flush the Handlers
+  #     meta: flush_handlers
+  #
+  #   - name: HTTP Check for sample
+  #     uri:
+  #       url: "http://{{ run_hosts }}:{{ tomcat_connector_port }}/sample"
+  #     register: http_response
+  #
+  #   - name: Check the Statuscode of the http_response is 200
+  #     fail:
+  #       msg: Something went wrong :/
+  #
+  #
+
+
+    # - name: HTTP Check for sample
+    #   uri:
+    #     url: "http://{{ run_hosts }}:{{ tomcat_connector_port }}/sample"
+    #   register: http_response
+    #
+    # # - name: Debug output
+    #   debug:
+    #     msg: "{{ http_response }}"

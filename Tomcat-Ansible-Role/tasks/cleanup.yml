@@ -1,0 +1,15 @@
+# Cleanup our mess in /tmp
+---
+-
+
+# REMEMBER TO UNCOMMENT WHEN GOING LIVE
+- name: Clean up temporary directory {{ java_tmp_work_dir }}
+  file:
+    path: "{{ java_tmp_work_dir }}"
+    state: absent
+
+
+- name: Clean up temporary files
+  file:
+    path: "{{ tomcat_tmp_work_dir }}"
+    state: absent

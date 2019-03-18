@@ -1,0 +1,31 @@
+# configure-tomcat.yml
+# here we do all the configuration related to Tomcat
+
+# In development we copy sample.war to the the remote server
+# This helps troubleshooting when developers upload a new java
+# application and all hell breaks !
+
+# We must consider not transfering the sample.war in Pre-Production/Production
+
+---
+- name: Transfer sample.war
+  copy:
+    src: "sample.war"
+    dest: "{{ tomcat_dir }}/latest/webapps"
+
+
+- name: Transfer tomcat server.xml
+  template:
+    src: "tomcat_server.xml.j2"
+    dest: "{{ tomcat_dir }}/latest/conf/server.xml"
+    mode: 0600
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+
+
+
+- name: Setup systemd
+  template:
+    src: "tomcat.service.xml.j2"
+    dest: "/etc/systemd/system/tomcat.service"
+  notify: start tomcat
