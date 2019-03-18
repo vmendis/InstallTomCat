@@ -17,7 +17,7 @@ pipeline {
         stage('Find the OS') {
             steps {
                  sh 'uname -a'
-                 sh  'yum list installed
+                 sh  'yum list installed'
             }               
         }
     }
