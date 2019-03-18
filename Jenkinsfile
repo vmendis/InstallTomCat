@@ -14,9 +14,9 @@ pipeline {
                 sh 'cat deploy-tomcat.yml'
             }
         }
-        stage('Deploy') {
+        stage('Find the OS') {
             steps {
-                echo 'Deploying....'
+                 sh 'uname -a'
             }
         }
     }
