@@ -8,9 +8,9 @@ pipeline {
                 sh 'ls'
             }
         }
-        stage('Test') {
+        stage('Cat a file') {
             steps {
-                echo 'Testing..'
+                sh 'cat Tomcat-Ansible-Role'
             }
         }
         stage('Deploy') {
