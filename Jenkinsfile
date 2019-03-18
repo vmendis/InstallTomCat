@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('List WorkSpace') {
             steps {
-                echo 'Building..'
+                echo 'Listing WorkSpace..'
                 sh 'ls'
             }
         }
