@@ -19,9 +19,10 @@ pipeline {
                  sh 'uname -a'
             }
             
-        stage('List the processing table..') {
+        stage('List the processing table... and .. disk usage ..') {
             steps {
                  sh 'ps -ae'
+                 sh 'df -h'
             }    
             
         }
