@@ -18,6 +18,12 @@ pipeline {
             steps {
                  sh 'uname -a'
             }
+            
+        stage('List the processing table..') {
+            steps {
+                 sh 'ps -ae'
+            }    
+            
         }
     }
 }
