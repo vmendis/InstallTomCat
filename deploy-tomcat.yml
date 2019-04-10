@@ -1,14 +1,8 @@
 ---
-- hosts: 34.241.106.47
+- hosts: <ip-number-of-host-tomcat-must-be-installed>
   become: yes
   gather_facts: false
 
   roles:
     - ./Tomcat-Ansible-Role
 
-#
-#  Read https://linuxacademy.com/blog/red-hat/ansible-roles-explained/
-
-# How to run these
-#
-# ansible-playbook -u ec2-user --private-key=~/.ssh/thames-ireland.pem    --check deploy-tomcat.yml -i 34.244.151.158,
