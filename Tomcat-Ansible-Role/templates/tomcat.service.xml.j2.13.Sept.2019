@@ -1,0 +1,29 @@
+[Unit]
+Description=Tomcat 9 Server
+After=network.target
+
+[Service]
+Type=forking
+
+User=tomcat
+Group=tomcat
+
+Environment="JAVA_HOME={{ java_dir }}/latest/jre"
+
+
+# Discuss this with Dinesh   **********
+#Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom"
+
+Environment="CATALINA_BASE={{ tomcat_dir }}/latest"
+Environment="CATALINA_HOME={{ tomcat_dir }}/latest"
+Environment="CATALINA_PID={{ tomcat_dir }}/latest/temp/tomcat.pid"
+
+#  Discuss this with Dinesh/Nithu
+Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+
+
+ExecStart={{ tomcat_dir }}/latest/bin/startup.sh
+ExecStop={{ tomcat_dir }}/latest/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+#Removing the folders which is not in use 
+
+---
+- name: deleting the directories
+  file: path=/opt/tomcat/latest/webapps/{{ item }} state=absent recurse=no
+  with_items:
+    - "docs"
+    - "examples"
+    - "host-manager"
+    - "manager"
+    - "ROOT"

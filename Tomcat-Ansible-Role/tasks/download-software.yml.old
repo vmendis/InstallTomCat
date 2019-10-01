@@ -1,0 +1,38 @@
+# Download both Oracle java and Tomcat
+---
+
+# Create temp work directory for java
+- name: Create temp work directory {{ java_tmp_work_dir }}
+  file:
+    path: "{{ java_tmp_work_dir }}"
+    state: directory
+    mode: '0777'
+
+# Downloading java using the shell module as we must accept oracle license
+# As Ansible will bitch about not using get_url, we blank the warnings.
+
+#- name: Download java {{ tomcat_java_version }}
+#  shell: 'wget --no-cookies  --no-check-certificate --header
+#   "Cookie:oraclelicense=accept-securebackup-cookie" 
+#   "http://download.oracle.com/otn/java/jdk/{{ tomcat_java_version }}-b12/478a62b7d4e34b78b671c754eaaf38ab/jdk-{{ tomcat_java_version }}-linux-x64.tar.gz"'
+#  args:
+#    chdir: "{{ java_tmp_work_dir }}/"
+#    warn: no
+
+
+
+# Create temp work directory for tomcat
+- name: Create temp work directory {{ tomcat_tmp_work_dir }}
+  file:
+    path: "{{ tomcat_tmp_work_dir }}"
+    state: directory
+    mode: '0777'
+
+
+#- name: Download apache-tomcat
+  #get_url:
+    #url: "https://www.apache.org/dist/tomcat/tomcat-{{tomcat_major_verion}}/v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz"
+    #dest: "{{ tomcat_tmp_work_dir }}"
+    #timeout: 120
+    #checksum: "{{ tomcat_checksum }}"
+    #force: no       # Remember to remove this when Live
