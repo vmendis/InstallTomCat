@@ -1,5 +1,5 @@
 ---
-- hosts: <ip-number-of-host-tomcat-must-be-installed>
+- hosts: all
   become: yes
   gather_facts: false
 

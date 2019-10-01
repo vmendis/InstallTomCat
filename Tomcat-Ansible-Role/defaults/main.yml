@@ -8,15 +8,15 @@ java_dir: /usr/java
 java_user: java
 java_group: java
 
-tomcat_java_version: 8u201
+tomcat_java_version: 8u211
 tomcat_jdk_version: 1.8.0
-tomcat_jdk_minor_version: 201
+tomcat_jdk_minor_version: 211
 tomcat_user: tomcat
 tomcat_group: tomcat
 tomcat_major_verion: 9
-tomcat_version: 9.0.16
+tomcat_version: 9.0.21
 tomcat_tmp_work_dir: /tmp/tomcat-work
 tomcat_dir: /opt/tomcat
-tomcat_checksum: sha512:3e398e2343d1afc16a5f0cbfa8516db9db59ea8686d7d817eafa11c1465b71b711ccb2cae8437d5c32442b3a3f6cd3dbf15285eb35a28fcdb42c19793e0ff64e
+tomcat_checksum: a8788ba8187f940b55d3db6cb0108943b8b48aecc2d9a3307409d3cbf72fac9b19fa434baa97aa0d4ac552f7c13967932b8a36dbae5d582bc14ed13bb058ea9b
 tomcat_service_name: tomcat
 tomcat_connector_port: 8080

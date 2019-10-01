@@ -1,4 +1,4 @@
-# Download both Oracle java and Tomcat
+# copy both Oracle java and Tomcat to remote host
 ---
 
 # Create temp work directory for java
@@ -6,17 +6,18 @@
   file:
     path: "{{ java_tmp_work_dir }}"
     state: directory
+    mode: '0777'
 
-# Downloading java using the shell module as we must accept oracle license
-# As Ansible will bitch about not using get_url, we blank the warnings.
 
-- name: Download java {{ tomcat_java_version }}
-  shell: 'wget --no-cookies  --no-check-certificate --header
-   "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com; oraclelicense=accept-securebackup-cookie"
-   "http://download.oracle.com/otn-pub/java/jdk/{{ tomcat_java_version }}-b09/42970487e3af4f5aa5bca3f542482c60/jdk-{{ tomcat_java_version }}-linux-x64.tar.gz"'
-  args:
-    chdir: "{{ java_tmp_work_dir }}/"
-    warn: no
+# Copy Java bundle
+- name: Copy Java 
+  copy:
+    src: /home/ec2-user/Work/TomCat/jdk-8u211-linux-x64.tar.gz
+    dest: "{{ java_tmp_work_dir }}"
+    owner: ec2-user
+    group: ec2-user
+    mode: 0644
+    #force: no       # Remember to remove this when Live
 
 
 
@@ -25,12 +26,15 @@
   file:
     path: "{{ tomcat_tmp_work_dir }}"
     state: directory
+    mode: '0777'
 
-
-- name: Download apache-tomcat
-  get_url:
-    url: "https://www.apache.org/dist/tomcat/tomcat-{{tomcat_major_verion}}/v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz"
+# Copy tomcat bundle
+- name: example copying file with owner and permissions
+  copy:
+    src: /home/ec2-user/Work/TomCat/apache-tomcat-9.0.21.tar.gz
     dest: "{{ tomcat_tmp_work_dir }}"
-    timeout: 120
-    checksum: "{{ tomcat_checksum }}"
-    force: no       # Remember to remove this when Live
+    owner: ec2-user
+    group: ec2-user
+    mode: 0644
+    #force: no       # Remember to remove this when Live
+

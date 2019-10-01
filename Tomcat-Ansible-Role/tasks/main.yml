@@ -6,3 +6,4 @@
 - import_tasks: install-tomcat.yml
 - import_tasks: configure-tomcat.yml     # Sets the systemd config files and start tomcat
 - import_tasks: cleanup.yml
+- import_tasks: harden-tomcat.yml #Removing the folders which are not in use

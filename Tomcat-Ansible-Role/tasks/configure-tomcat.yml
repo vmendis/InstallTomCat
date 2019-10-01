@@ -5,13 +5,13 @@
 # This helps troubleshooting when developers upload a new java
 # application and all hell breaks !
 
-# We must consider not transfering the sample.war in Pre-Production/Production
+# Only transfer sample.war if initial testing with TomCat required.
 
 ---
-- name: Transfer sample.war
-  copy:
-    src: "sample.war"
-    dest: "{{ tomcat_dir }}/latest/webapps"
+#- name: Transfer sample.war
+#  copy:
+#    src: "sample.war"
+#    dest: "{{ tomcat_dir }}/latest/webapps"
 
 
 - name: Transfer tomcat server.xml
@@ -22,10 +22,38 @@
     owner: "{{ tomcat_user }}"
     group: "{{ tomcat_group }}"
 
+- name: Transfer setenv.sh
+  template:
+    src: "setenv.sh"
+    dest: "{{ tomcat_dir }}/latest/bin/setenv.sh"
+    mode: 0764
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
 
+- name: Recursively change ownership of tomcat log directory. This allows developers to monitor log files
+  file:
+    path: /opt/tomcat/latest/logs
+    state: directory
+    recurse: yes
+    mode: '0755'
 
+- name: Create directory to upload ETL files
+  file:
+    path: /var/tmp/ETL
+    state: directory
+    mode: '0775'
+    owner: tomcat
+    group: tomcat
+ 
 - name: Setup systemd
   template:
     src: "tomcat.service.xml.j2"
     dest: "/etc/systemd/system/tomcat.service"
-  notify: start tomcat
+#  notify: start tomcat
+
+- name: Make sure tomcat is running
+  systemd:
+    enabled: yes
+    state: started
+    name: tomcat
+
