@@ -1,13 +1,15 @@
 README
 
+Please substitute the corret paths to match the paths on your computer.
 
 0.  copy the public key used by Ansible to communicate with nodes
 
 ssh_key.yml is used for this purpose
 
 a. Make sure corret key is specified in 'key'
+b. cd /home/ec2-user/Work/MyAnsible/InstallTomCat-Using-LocalFiles
 b. run 
-    ansible-playbook --private-key=/home/ec2-user/Keys/validation-services-dev-tomcat.priv  /home/ec2-user/Work/MyAnsible/ssh_key.yml -i <ip-number-of-new-tomcat-server>,
+    ansible-playbook --private-key=/home/ec2-user/Keys/validation-services-dev-tomcat.priv  ./ssh_key.yml -i <ip-number-of-new-tomcat-server>,
 
 
 

@@ -1,0 +1,12 @@
+---
+- name: playbook for copying ssh keys
+  hosts: all
+  gather_facts: False
+
+  tasks:
+  - name: Append public key used for ansible work onto the remote instance
+    authorized_key:
+      user: ec2-user
+      state: present
+      key: "{{ lookup('file', '/home/ec2-user/Keys/ansible-key.pub') }}"
+
